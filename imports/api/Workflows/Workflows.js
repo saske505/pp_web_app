@@ -11,39 +11,51 @@ Workflows.allow({
     remove: () => false,
   });
   
-Workflows.deny({
+  Workflows.deny({
     insert: () => true,
     update: () => true,
     remove: () => true,
 });
 
 Workflows.schema = new SimpleSchema({
-    owner: {
+      owner: {
         type: String,
-        label: 'The ID of the user this document belongs to.',
+        label: 'The ID of the user this workspace belongs to.',
       },
       createdAt: {
         type: String,
-        label: 'The date this document was created.',
+        label: 'The date this workspace was created.',
         autoValue() {
           if (this.isInsert) return (new Date()).toISOString();
         },
       },
       updatedAt: {
         type: String,
-        label: 'The date this document was last updated.',
+        label: 'The date this workspace was last updated.',
         autoValue() {
           if (this.isInsert || this.isUpdate) return (new Date()).toISOString();
         },
       },
       name: {
         type: String,
-        label: 'The title of the document.',
+        label: 'The name of the workspace.',        
       },
       body: {
         type: String,
-        label: 'The body of the document.',
+        label: 'The body of the workspace.',
       },
+      admin : {
+        type : String,
+        label : 'the workspace admin',
+      },
+      apiKey : {
+        type : String,
+        label : 'api key for the workspace'
+      },
+      apiSecret : {
+        type : String,
+        label : 'api secret for the workspace'
+      }
 })
 
 Workflows.attachSchema(Workflows.schema);
