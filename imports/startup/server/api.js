@@ -1,5 +1,8 @@
 import '../../api/Documents/server/indexes';
 import '../../api/Documents/server/publications';
+//Workspaces import
+import '../../api/Workspaces/server/indexes';
+import '../../api/Workspaces/server/publications';
 
 import '../../api/OAuth/server/methods';
 

@@ -17,6 +17,9 @@ import Documents from '../../pages/Documents/Documents';
 import NewDocument from '../../pages/NewDocument/NewDocument';
 import ViewDocument from '../../pages/ViewDocument/ViewDocument';
 import EditDocument from '../../pages/EditDocument/EditDocument';
+import Workspaces from '../../pages/Workspaces/Workspaces';
+import NewWorkspace from '../../pages/Workspaces/NewWorkspaces';
+import ViewWorkspace from '../../pages/Workspaces/ViewWorkspaces';
 import Signup from '../../pages/Signup/Signup';
 import Login from '../../pages/Login/Login';
 import Logout from '../../pages/Logout/Logout';
@@ -28,7 +31,6 @@ import NotFound from '../../pages/NotFound/NotFound';
 import Footer from '../../components/Footer/Footer';
 import Terms from '../../pages/Terms/Terms';
 import Privacy from '../../pages/Privacy/Privacy';
-import ExamplePage from '../../pages/ExamplePage/ExamplePage';
 import VerifyEmailAlert from '../../components/VerifyEmailAlert/VerifyEmailAlert';
 import { onLogin, onLogout } from '../../../modules/redux/actions';
 
@@ -96,6 +98,9 @@ class App extends React.Component {
         <Grid>
           <Switch>
             <Route exact name="index" path="/" component={Index} />
+            <Authenticated exact path="/workspaces" component={Workspaces} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
+            <Authenticated exact path="/workspaces/new" component={NewWorkspace} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
+            <Route exact path="/workspaces/:_id" component={ViewWorkspace} />
             <Authenticated exact path="/documents" component={Documents} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
             <Authenticated exact path="/documents/new" component={NewDocument} setAfterLoginPath={setAfterLoginPath} {...props} {...state} />
             <Route exact path="/documents/:_id" component={ViewDocument} />
@@ -108,8 +113,7 @@ class App extends React.Component {
             <Route name="recover-password" path="/recover-password" component={RecoverPassword} />
             <Route name="reset-password" path="/reset-password/:token" component={ResetPassword} />
             <Route name="terms" path="/terms" component={Terms} />
-            <Route name="privacy" path="/privacy" component={Privacy} />
-            <Route name="examplePage" path="/example-page" component={ExamplePage} />
+            <Route name="privacy" path="/privacy" component={Privacy} />           
             <Route component={NotFound} />
           </Switch>
         </Grid>
